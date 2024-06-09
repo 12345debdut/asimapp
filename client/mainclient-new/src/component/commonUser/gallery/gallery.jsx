@@ -22,6 +22,7 @@ const Gallery = (props) => {
     <div>
       {Object.keys(galleries).length > 0 ? (
         Object.keys(galleries).map((item, index) => {
+          console.log(galleries[item]);
           return (
             <GallerySingle
               title={item}

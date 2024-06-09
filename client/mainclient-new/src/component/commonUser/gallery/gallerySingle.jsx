@@ -81,8 +81,7 @@ export default function GallerySingle(props) {
   const [snackBarType, setSnackBarType] = useState("success");
   const theme = useTheme();
   const date = new Date(props.images[0].galleryDate);
-  const [openPreview, setOpenPreview] = useState(false);
-  const [previewUrls, setPreviewUrls] = useState([]);
+  const [previewIndex, setPreviewIndex] = useState(-1);
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
     ...theme.typography.body2,
@@ -113,8 +112,7 @@ export default function GallerySingle(props) {
                   key={index}
                   setSnackBarOpen={setSnackBarOpen}
                   onCardClick={(selectedUrl) => {
-                    setPreviewUrls(selectedUrl);
-                    setOpenPreview(true);
+                    setPreviewIndex(index);
                   }}
                 />
               </Item>
@@ -129,20 +127,22 @@ export default function GallerySingle(props) {
         setOpen={setSnackBarOpen}
       />
       <Lightbox
-        open={openPreview}
-        close={() => setOpenPreview(false)}
+        open={previewIndex != -1}
+        close={() => setPreviewIndex(-1)}
         slides={[
           {
-            src: `${previewUrls[0]}`,
+            src: `${props.images[previewIndex]?.galleryImageUrl}`,
             alt: "image 1",
-            width: 3840,
-            height: 2560,
-            srcSet: previewUrls.map((it) => {
-              return {
-                src: it,
-              };
-            }),
           },
+          ...props.images
+            .filter(
+              (item) =>
+                props.images[previewIndex]?.galleryImageUrl !=
+                item?.galleryImageUrl
+            )
+            .map((item, index) => {
+              return { src: item?.galleryImageUrl };
+            }),
         ]}
       />
     </Box>
