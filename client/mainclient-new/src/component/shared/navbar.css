@@ -1,0 +1,34 @@
+.login-text {
+  color: blue !important;
+  text-decoration: none !important;
+}
+.icon-color-nav {
+  color: white !important;
+}
+.background-icon {
+  background-color: white !important;
+}
+.login-div {
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+/* .common-nav-bar is on the app.css file because of overlapping*/
+.common-nav-bar {
+  background-color: #3f51b5;
+}
+.common-nav-bar-text {
+  color: white !important;
+}
+@media (max-width: 600px) {
+  .login-text {
+    color: #3f51b5 !important;
+  }
+  .login-div {
+    background-color: white;
+    border-radius: 0px;
+    text-align: center;
+  }
+}

@@ -1,0 +1,42 @@
+@import url(../../css/partials/_variables.css);
+.linear-gradiant-body{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+.linear-gradiant-color{
+    color:var(--material-ui-theme-primary-text) !important;
+}
+.linear-gradiant-icon{
+    font-size: 25px;
+    color:var(--material-ui-theme-primary-text);
+    margin:2px;
+}
+.color-1{
+    background: rgb(18,127,152) !important;
+    background: linear-gradient(144deg, rgba(18,127,152,1) 0%, rgba(122,33,166,1) 48%) !important;
+}
+.color-2{
+    background: #cc2b5e;
+    background: linear-gradient(144deg, #cc2b5e 0%, #753a88 60%);
+}
+.color-3{
+    background: #ec008c;
+    background: linear-gradient(144deg, #ec008c 0%, #fc6767 60%);
+}
+.color-4{
+    background: #0052D4;
+    background: linear-gradient(144deg, #0052D4 0%, #6FB1FC 60%); 
+}
+.color-5{
+    background: #00416A;
+    background: linear-gradient(144deg, #00416A 0%, #799F0C 60%); 
+}
+.color-6{
+    background: #0F2027;
+    background: linear-gradient(144deg, #0F2027 0%, #2C5364 60%); 
+}

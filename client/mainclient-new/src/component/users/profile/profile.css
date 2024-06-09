@@ -1,0 +1,183 @@
+/***
+User Profile Sidebar by @keenthemes
+A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
+Licensed under MIT
+***/
+
+
+.col-md-3{
+    background:  inherit !important;
+}
+  /* Profile container */
+  .profile {
+    margin: 20px 0 !important;
+  }
+  
+  /* Profile sidebar */
+  .profile-sidebar {
+    padding: 20px 0 10px 0 !important;
+    background: inherit !important;
+  }
+  .profile-userpic{
+      display: flex;
+      justify-content: center;
+  }
+  .profile-userpic img {
+    float: none !important;
+    margin: 0 auto !important;
+    width: 200px !important;
+    height: 200px !important;
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    border-radius: 50% !important;
+    object-fit: cover;
+  }
+  
+  .profile-usertitle {
+    text-align: center !important;
+    margin-top: 20px !important;
+  }
+  
+  .profile-usertitle-name {
+    color: #5a7391 !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    margin-bottom: 7px !important;
+  }
+  
+  .profile-usertitle-job {
+    text-transform: uppercase !important;
+    color: #5b9bd1 !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    margin-bottom: 15px !important;
+  }
+  
+  .profile-userbuttons {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+  
+  .profile-userbuttons .btn {
+    text-transform: uppercase !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    padding: 6px 15px !important;
+    margin-right: 5px !important;
+  }
+  
+  .profile-userbuttons .btn:last-child {
+    margin-right: 0px !important;
+  }
+      
+  .profile-usermenu {
+    margin-top: 30px !important;
+    display: flex;
+    flex-direction: column !important;
+  }
+  
+  .profile-usermenu ul li {
+    border-bottom: 1px solid #f0f4f7 !important;
+  }
+  
+  .profile-usermenu ul li:last-child {
+    border-bottom: none !important;
+  }
+  
+  .profile-usermenu ul li a {
+    color: #93a3b5 !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+  }
+  
+  .profile-usermenu ul li a i {
+    margin-right: 8px !important;
+    font-size: 14px !important;
+  }
+  
+  .profile-usermenu ul li a:hover {
+    background-color: #fafcfd !important;
+    color: #5b9bd1 !important;
+  }
+  
+  .profile-usermenu ul li.active {
+    border-bottom: none !important;
+  }
+  
+  .profile-usermenu ul li.active a {
+    color: #5b9bd1 !important;
+    background-color: #f6f9fb !important;
+    border-left: 2px solid #5b9bd1 !important;
+    margin-left: -2px !important;
+  }
+  
+  /* Profile Content */
+  .profile-content {
+    padding: 20px !important;
+    background: #fff !important;
+    min-height: 460px !important;
+  }
+  .left-side-card{
+      border-style: dotted;
+      border-color: #2c5e86;
+      border-width: 3px;
+  }
+
+.right-side-card{
+    border-style: solid;
+    border-color: #2c5e86;
+    border-width: 3px;
+    margin-left: 10px;
+}
+@media(max-width:700px){
+  .right-side-card{
+    border-style: solid;
+    border-color: #2c5e86;
+    border-width: 3px;
+    margin-top: 10px;
+}
+}
+
+.deatils-profile{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    border-style: solid;
+    border-color: #2980b9;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 10px;
+}
+.details-profile-single{
+    padding: 5px;
+    background-color: #2980b9;
+    border-style: solid;
+    border-width: 5px;
+    border-left-color: #9b59b6;
+    margin-top: 10px;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-top-color: transparent;
+    color:white;
+    font-size: 17px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.details-profile-single:hover{
+    background-color: #1e5e88;
+}
+.labelInputadmin{
+  margin-top: 10px;
+  padding: 10px;
+  background: rgb(139, 13, 223); 
+  display: table;
+  color: #753a88;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #f0f4f7;
+}
+.inputFileadmin{
+  display: none;
+}

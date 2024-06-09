@@ -1,0 +1,35 @@
+
+
+
+html, body{
+    margin: 0%;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* CSS Variables */ 
+
+:root{
+    --primary-color: #4458dc;
+    --primary-color2: #854fee;
+    --title-color: #141313;
+    --text-color: #777777;  
+    --border-color: #201f1f17;  
+    --gradient-color: linear-gradient(90deg, #4458dc 0%, #854fee 100%);
+    --shadow-color:  0px 10px 30px rgba(118, 85, 225, 0.3);
+    --box-shadow: 10px 10px 10px rgba(57, 56, 61, 0.205);
+    --material-ui-theme-primary-light:#757ce8;
+    --material-ui-theme-primary-main:#3f50b5;
+    --material-ui-theme-primary-dark:#002884;
+    --material-ui-theme-primary-text:#fff;
+    --material-ui-theme-secondary-light:#f81f6b;
+    --material-ui-theme-secondary-main:#f50057;
+    --material-ui-theme-secondary-dark:#be0d4b;
+    --material-ui-theme-secondary-text:#fff;
+    --error-color:	rgb(255,0,0);
+
+    /* font family variables. */ 
+    --roboto: 'Poppins', sans-serif;
+} 
