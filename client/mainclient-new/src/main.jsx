@@ -9,7 +9,7 @@ import "./App.css";
 import App from "./App.jsx";
 import { AuthProvider } from "./context/authContext";
 import { ToastContainer } from "react-toastify";
-import { ThemeProvider, createTheme } from "@mui/system";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 import "./index.css";
 
 var style = getComputedStyle(document.body);

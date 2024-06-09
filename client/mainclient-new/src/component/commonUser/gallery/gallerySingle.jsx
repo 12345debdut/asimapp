@@ -1,13 +1,9 @@
 import React, { useContext, useState } from "react";
-import {
-  Row,
-  Col,
-  Card,
-  CardImg,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-} from "reactstrap";
+import { Card, CardImg, CardBody, CardTitle } from "reactstrap";
+import { styled } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
+import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 import { AuthContext } from "../../../context/authContext";
@@ -15,8 +11,10 @@ import { galleryDelete } from "../../../firebase/admin/gallery/gallery";
 import { toast } from "react-toastify";
 import CustomizedSnackbar from "../../shared/snackbarCustom";
 import "./gallery.css";
-//import "react-image-lightbox/style.css";
 import { useTheme } from "@mui/material";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+
 const GallerySingleCard = (props) => {
   const [auth, _] = useContext(AuthContext);
   const { item, setSnackBarOpen } = props;
@@ -36,8 +34,8 @@ const GallerySingleCard = (props) => {
   };
   return (
     <div style={{ marginTop: 20 }}>
-      <Card style={{ width: 300 }}>
-        <a href={item.galleryImageUrl} data-lightbox="photos">
+      <Card style={{ minWidth: 350 }}>
+        <div onClick={() => props.onCardClick(item.galleryImageUrl)}>
           <CardImg
             className="center-cropped"
             src={item.galleryImageUrl}
@@ -47,7 +45,7 @@ const GallerySingleCard = (props) => {
               setModalOpen(!isModalOpen);
             }}
           />
-        </a>
+        </div>
         <CardBody>
           <CardTitle
             style={{ color: theme.palette.primary.dark, fontSize: 25 }}
@@ -83,9 +81,18 @@ export default function GallerySingle(props) {
   const [snackBarType, setSnackBarType] = useState("success");
   const theme = useTheme();
   const date = new Date(props.images[0].galleryDate);
+  const [openPreview, setOpenPreview] = useState(false);
+  const [previewUrls, setPreviewUrls] = useState([]);
+  const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+  }));
   return (
-    <div style={{ padding: 20 }}>
-      <div style={{ display: "flex", flexDirection: "row" }}>
+    <Box style={{ padding: 20 }} sx={{ flexGrow: 1 }}>
+      <div style={{ display: "flex" }}>
         <div style={{ padding: 20 }}>
           <h3 style={{ color: theme.palette.primary.dark }}>{props.title}</h3>
           <h6
@@ -95,26 +102,49 @@ export default function GallerySingle(props) {
           }/${date.getFullYear()}`}</h6>
         </div>
       </div>
-      <Row>
+      <Grid container spacing={2}>
         {props.images.map((item, index) => {
           return (
-            <Col key={index}>
-              <GallerySingleCard
-                {...props}
-                item={item}
-                key={index}
-                setSnackBarOpen={setSnackBarOpen}
-              />
-            </Col>
+            <Grid item>
+              <Item>
+                <GallerySingleCard
+                  {...props}
+                  item={item}
+                  key={index}
+                  setSnackBarOpen={setSnackBarOpen}
+                  onCardClick={(selectedUrl) => {
+                    setPreviewUrls(selectedUrl);
+                    setOpenPreview(true);
+                  }}
+                />
+              </Item>
+            </Grid>
           );
         })}
-      </Row>
+      </Grid>
       <CustomizedSnackbar
         title="Please change the tab to view the latest update"
         open={snackbarOpen}
         type={snackBarType}
         setOpen={setSnackBarOpen}
       />
-    </div>
+      <Lightbox
+        open={openPreview}
+        close={() => setOpenPreview(false)}
+        slides={[
+          {
+            src: `${previewUrls[0]}`,
+            alt: "image 1",
+            width: 3840,
+            height: 2560,
+            srcSet: previewUrls.map((it) => {
+              return {
+                src: it,
+              };
+            }),
+          },
+        ]}
+      />
+    </Box>
   );
 }

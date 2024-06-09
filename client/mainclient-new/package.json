@@ -29,7 +29,8 @@
     "reactstrap": "^9.2.2",
     "sass-loader": "^14.2.1",
     "sweetalert": "^2.1.2",
-    "underscore": "^1.13.6"
+    "underscore": "^1.13.6",
+    "yet-another-react-lightbox": "^3.19.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

@@ -2,8 +2,7 @@ import React from "react";
 import BaseLayout from "../../component/shared/baseLayout";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+import { Box } from "@mui/system";
 import Gallery from "../../component/commonUser/gallery/gallery";
 import BottomNavBar from "../../component/shared/bottomNavbar";
 
@@ -11,16 +10,15 @@ function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
   return (
-    <Typography
-      component="div"
+    <div
       role="tabpanel"
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && <Box p={3}>{children}</Box>}
-    </Typography>
+      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+    </div>
   );
 }
 
@@ -41,20 +39,18 @@ const AllGallery = (props) => {
   return (
     <div>
       <BaseLayout />
-      <AppBar position="static">
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label="simple tabs example"
-          variant="scrollable"
-        >
-          <Tab label="About" {...a11yProps(0)} />
-          <Tab label="Result and Prize" {...a11yProps(1)} />
-          <Tab label="Teacher's Day" {...a11yProps(2)} />
-          <Tab label="Reunion" {...a11yProps(3)} />
-          <Tab label="Knowledge" {...a11yProps(4)} />
-        </Tabs>
-      </AppBar>
+      <Tabs
+        value={value}
+        onChange={handleChange}
+        aria-label="simple tabs example"
+        variant="scrollable"
+      >
+        <Tab label="About" {...a11yProps(0)} />
+        <Tab label="Result and Prize" {...a11yProps(1)} />
+        <Tab label="Teacher's Day" {...a11yProps(2)} />
+        <Tab label="Reunion" {...a11yProps(3)} />
+        <Tab label="Knowledge" {...a11yProps(4)} />
+      </Tabs>
       <TabPanel value={value} index={0}>
         <Gallery catagory="about" />
       </TabPanel>
