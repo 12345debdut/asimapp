@@ -33,7 +33,11 @@ export default function ReviewSection() {
   const navigateTo = useNavigate();
   const theme = useTheme();
   const color = theme.palette.primary.main;
-  const inputStyle = { borderColor: color };
+  const inputStyle = {
+    borderColor: color,
+    color: "black",
+    backgroundColor: "white",
+  };
   useEffect(() => {
     let curyear = new Date().getFullYear();
     let tempyear = [];

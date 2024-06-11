@@ -61,7 +61,7 @@ const NoticeUploadComponent = () => {
                 setNoticeText(e.target.value);
               }}
               value={noticeText}
-              style={{ width: "100%" }}
+              style={{ width: "100%", background: "white", color: "black" }}
             />
           </div>
           <div style={{ padding: 20 }}>

@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
+import "./baseLayout.css";
 import { useTheme } from "@mui/material/styles";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -116,6 +117,8 @@ export default function BaseLayout(props) {
       <SwipeableDrawer
         anchor="left"
         open={open}
+        ModalProps={{}}
+        classes={{ paper: "drawer-content" }}
         onOpen={toggleDrawer("left", true)}
         onClose={toggleDrawer("left", false)}
       >

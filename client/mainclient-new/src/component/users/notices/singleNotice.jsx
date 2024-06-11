@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import FullScreenDialog from "./fullScreenDialog";
-import { useTheme } from "@mui/material";
+import { useTheme, Paper } from "@mui/material";
 const SingleNotice = (props) => {
   const [open, setOpen] = useState(false);
   const date = new Date(props.time);
@@ -11,11 +11,11 @@ const SingleNotice = (props) => {
     }
   };
   return (
-    <div className="col-lg-4">
+    <Paper className="col-lg-4" elevation={20}>
       <div style={{ justifyContent: "center", display: "flex" }}>
         <div
           className="login-card"
-          style={{ alignSelf: "center", width: "80%", padding: 30 }}
+          style={{ alignSelf: "center", width: "100%", padding: 30 }}
         >
           <p style={{ color: theme.palette.grey, fontSize: 20 }}>{props.id}</p>
           {props.text && (
@@ -55,7 +55,7 @@ const SingleNotice = (props) => {
       </div>
       <br />
       <br />
-    </div>
+    </Paper>
   );
 };
 export default SingleNotice;

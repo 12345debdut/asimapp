@@ -1,38 +1,61 @@
-#root {
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00b4cc;
+  border-right: none;
+  padding: 5px;
+  height: 36px;
+  border-radius: 2px 0 0 2px;
+  outline: none;
+  color: #9dbfaf;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.searchTerm:focus {
+  color: #00b4cc;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #00b4cc;
+  background: #00b4cc;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+.wrap {
+  width: 60%;
 }
 
-.card {
-  padding: 2em;
+.login-card {
+  box-shadow: 0px 10px 30px rgba(57, 56, 61, 0.205);
+  transform: scale(1.1);
 }
-
-.read-the-docs {
-  color: #888;
+.feedback-loaded {
+  display: block;
+}
+.info-card {
+  width: 200px;
+  background-color: #daf1f5;
+  border-radius: 15px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0px 10px 30px rgba(57, 56, 61, 0.205);
+  transform: scale(1.1);
+  margin-left: 10px;
+  align-items: center;
+  display: flex;
+}
+.common-nav-bar-text {
+  color: white !important;
 }

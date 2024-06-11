@@ -91,6 +91,7 @@ const Login = (props) => {
                 }}
                 style={InputStyle}
                 id="standard-basic"
+                variant="standard"
               />
             </div>
 
@@ -107,6 +108,7 @@ const Login = (props) => {
                 type={isPasswordShow ? "text" : "password"}
                 style={InputStyle}
                 id="standard-basic"
+                variant="standard"
               />
             </div>
             <div style={{ padding: 20 }}>
