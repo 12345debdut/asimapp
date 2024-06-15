@@ -24,7 +24,9 @@ const GallerySingleCard = (props) => {
   const handleSingleDelete = async (id, galleryPath) => {
     setIsLoading(true);
     let res = await galleryDelete(id, galleryPath, props.catagory);
+    console.log(res);
     if (res.status == 200) {
+      props.onCardDeleted();
       toast.success(res.message);
       setSnackBarOpen(true);
     } else {
@@ -82,6 +84,7 @@ export default function GallerySingle(props) {
   const theme = useTheme();
   const date = new Date(props.images[0].galleryDate);
   const [previewIndex, setPreviewIndex] = useState(-1);
+  const [imagesState, setImagesState] = useState(props.images);
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
     ...theme.typography.body2,
@@ -89,6 +92,7 @@ export default function GallerySingle(props) {
     textAlign: "center",
     color: theme.palette.text.secondary,
   }));
+  if (imagesState.length === 0) return <h3>No data found!!</h3>;
   return (
     <Box style={{ padding: 20 }} sx={{ flexGrow: 1 }}>
       <div style={{ display: "flex" }}>
@@ -102,7 +106,7 @@ export default function GallerySingle(props) {
         </div>
       </div>
       <Grid container spacing={2}>
-        {props.images.map((item, index) => {
+        {imagesState.map((item, index) => {
           return (
             <Grid item>
               <Item>
@@ -113,6 +117,12 @@ export default function GallerySingle(props) {
                   setSnackBarOpen={setSnackBarOpen}
                   onCardClick={(selectedUrl) => {
                     setPreviewIndex(index);
+                  }}
+                  onCardDeleted={() => {
+                    console.log("On card deleted: " + item.id);
+                    setImagesState((prevState) =>
+                      prevState.filter((imageItem) => imageItem.id != item.id)
+                    );
                   }}
                 />
               </Item>

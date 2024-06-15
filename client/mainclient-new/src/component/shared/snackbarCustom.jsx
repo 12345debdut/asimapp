@@ -1,10 +1,6 @@
 import React from "react";
 import Snackbar from "@mui/material/Snackbar";
-import MuiAlert from "@mui/lab/Alert";
-
-function Alert(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
+import { Alert } from "@mui/material";
 
 export default function CustomizedSnackbar(props) {
   return (
@@ -16,6 +12,8 @@ export default function CustomizedSnackbar(props) {
       }}
     >
       <Alert
+        elevation={6}
+        variant="filled"
         severity={props.type}
         onClose={() => {
           props.setOpen(false);

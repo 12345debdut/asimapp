@@ -6,6 +6,7 @@ import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
 import CircularProgress from "@mui/material/CircularProgress";
 import ChipsArray from "./galleryChip";
+import { Input } from "@mui/material";
 import { AuthContext } from "../../../context/authContext";
 import { galleryUploadSingle } from "../../../firebase/admin/gallery/galleryUpload";
 import { toast } from "react-toastify";
@@ -17,15 +18,20 @@ export default function GalleryForm() {
   const [galleryDescription, setGalleryDescription] = useState("");
   const [galleries, setGalleries] = useState("");
   const [galleryDetails, setGalleryDetails] = useState("");
-  const [galleryImage, setGalleryImage] = useState({});
+  const [galleryImage, setGalleryImage] = useState([{}]);
   const [galleryPurpose, setGalleryPurpose] = useState("about");
   const [selectedDate, setSelectedDate] = useState(Date.now());
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [auth, _] = useContext(AuthContext);
   const theme = useTheme();
-  const handleDateChange = (date) => {
-    setSelectedDate(Date.parse(date));
+  const handleDateChange = (event) => {
+    let splittedDate = event.target.value.split("-");
+    setSelectedDate(
+      new Date(
+        `${splittedDate[1]}-${splittedDate[2]}-${splittedDate[0]}`
+      ).getTime()
+    );
   };
 
   useEffect(() => {
@@ -51,7 +57,7 @@ export default function GalleryForm() {
   };
   const handleSubmit = async () => {
     setIsLoading(true);
-    if (galleryImage.name && galleryTitle.length > 0) {
+    if (galleryImage.length > 0 && galleryTitle.length > 0) {
       const uploadRes = await galleryUploadSingle(
         galleryTitle,
         galleryDescription,
@@ -117,8 +123,9 @@ export default function GalleryForm() {
           <input
             type="file"
             id="usr"
+            multiple={true}
             onChange={(e) => {
-              setGalleryImage(e.target.files[0]);
+              setGalleryImage(e.target.files);
             }}
           />
         </div>
@@ -142,19 +149,13 @@ export default function GalleryForm() {
           </FormControl>
         </div>
         <div style={{ padding: 20 }}>
-          {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <KeyboardDatePicker
-              margin="normal"
-              id="date-picker-dialog"
-              label="Date of the occation"
-              format="dd/MM/yyyy"
-              value={selectedDate}
-              onChange={handleDateChange}
-              KeyboardButtonProps={{
-                "aria-label": "change date",
-              }}
-            />
-          </MuiPickersUtilsProvider> */}
+          <Input
+            type="date"
+            id="date"
+            onChange={(event) => {
+              handleDateChange(event);
+            }}
+          />
         </div>
         {error.length > 0 && (
           <p style={{ color: theme.palette.error.main, marginLeft: 20 }}>

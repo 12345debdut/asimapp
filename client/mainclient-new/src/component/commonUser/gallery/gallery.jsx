@@ -26,7 +26,7 @@ const Gallery = (props) => {
           return (
             <GallerySingle
               title={item}
-              key={index}
+              key={galleries[item].id}
               images={galleries[item]}
               {...props}
               setGalleries={setGalleries}
