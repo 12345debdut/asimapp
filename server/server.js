@@ -58,7 +58,7 @@ app.use(cors());
 
 //for react files middleware
 app.use(
-  express.static(path.join(__dirname, "../client", "mainclient", "build"))
+  express.static(path.join(__dirname, "../client", "mainclient-new", "dist"))
 );
 app.use(
   "/exam",
